@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>CloudConvo</title>
+    <!-- --------------favicon-------------- -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="100x100"
+      href="assets/girlimg.webp"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="cursor.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts Link For Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+    <script src="script.js" defer></script>
+    <style>
+      /* Additional CSS for animated GIF background */
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        background: url("https://miro.medium.com/v2/resize:fit:679/1*yE-S7HG0Rg-ACAcnjvKf5Q.gif")
+          center center fixed;
+        background-size: cover;
+      }
+
+      /* Other styles remain unchanged */
+
+      /* Override center alignment for paragraphs */
+      .welcome-message p {
+        text-align: left;
+      }
+
+      /* Style for typing animation */
+      #typed-text {
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 0;
+        padding: 0;
+        border-right: 0.15em solid lightblue; /* Adjust as needed */
+        animation: typing 3s steps(22) infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Rest of your content -->
+    <div class="welcome-message">
+      <h2>
+        <span class="highlight">Hi</span> there, I'm
+        <span class="highlight bg-yellowColor text-lightGrey font-semibold"
+          >CloudConvo</span
+        >,
+      </h2>
+      <h1><span id="typed-text"></span></h1>
+      <!--<p style="color: azure">
+      CloudConvo is your friendly virtual assistant here to assist you with
+      any queries you may have. Whether it's answering questions, providing
+      information, or just having a friendly chat, I'm here to help!
+    </p>-->
+    </div>
+
+    <button class="chatbot-toggler">
+      <span class="material-symbols-rounded">mode_comment</span>
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="chatbot">
+      <header>
+        <h2>Chatbot</h2>
+        <span class="close-btn material-symbols-outlined">close</span>
+      </header>
+      <ul class="chatbox">
+        <li class="chat incoming">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <p>Hi there 👋 <br />How can I help you today?</p>
+        </li>
+      </ul>
+      <div class="chat-input">
+        <textarea
+          placeholder="Enter a message..."
+          spellcheck="false"
+          required
+        ></textarea>
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <p>Made with <span class="heart">❤️</span> by CloudConvo</p>
+      </div>
+    </footer>
+
+    <script>
+      // JavaScript to animate text in h1 tag
+      const text = "Welcome to my Chatbot!";
+      let index = 0;
+      const spanTypedText = document.getElementById("typed-text");
+
+      function typeText() {
+        if (index <= text.length) {
+          spanTypedText.textContent = text.slice(0, index);
+          index++;
+          setTimeout(typeText, 100); // Adjust speed as needed
+        }
+      }
+
+      typeText();
+    </script>
+  </body>
+</html>

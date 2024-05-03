@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to CloudConvo</title>
+    <style>
+      body {
+        background-image: url("https://miro.medium.com/v2/resize:fit:1400/1*jNNyeWK3yDTgVMsuLxFLgg.gif");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      .container {
+        width: 90%;
+        margin: auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: darkmagenta;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s; /* Add transition for smooth color change */
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3; /* Darker blue color on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Welcome to CloudConvo</h3>
+      <p>I'm glad to see you here.</p>
+      <p>
+        CloudConvo is your friendly virtual assistant here to assist you with
+        any queries you may have. Whether it's answering questions, providing
+        information, or just having a friendly chat, I'm here to help!
+      </p>
+      <form id="google-form" method="POST">
+        <label for="fname">Name</label>
+        <input
+          type="text"
+          id="fname"
+          name="Name"
+          placeholder="Your name.."
+          required
+        />
+
+        <label for="lname">Email</label>
+        <input
+          type="text"
+          id="lname"
+          name="Email"
+          placeholder="Your Email.."
+          required
+        />
+
+        <label for="mobile">how-found</label>
+        <input
+          type="text"
+          id="mobile"
+          name="how-found"
+          placeholder="How do you get to know about us......"
+          required
+        />
+
+        <input type="submit" value="Submit" name="submit" />
+      </form>
+    </div>
+
+    <!--<script>
+      const form = document.getElementById("google-form");
+      form.addEventListener("submit", handleSubmit);
+
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        if (form.checkValidity()) {
+          const formData = new FormData(form);
+          fetch(
+            "https://script.google.com/macros/s/AKfycbxdpex02YXEmcrHzib9K1nqRFcwx3A9u9bBlowBlFdholyHv_lJs3iDklgYLsOYb1_w/exec",
+            {
+              method: "POST",
+              body: formData,
+            }
+          )
+            .then((response) => {
+              if (response.ok) {
+                // Set a cookie to mark form submission
+                setCookie("formSubmitted", "true", 365); // Cookie will last for 365 days
+                alert("Thanks for Contacting us..! Browse more...");
+                form.reset(); // Reset form after successful submission
+                window.location.replace("homepage.html"); // Redirect to homepage.html after successful submission
+              } else {
+                alert("Something went wrong. Please try again later.");
+              }
+            })
+            .catch((error) => {
+              console.error("Error!", error.message);
+              alert("Something went wrong. Please try again later.");
+            });
+        } else {
+          alert("Please fill in all required fields.");
+        }
+      }
+
+      // Function to set cookie
+      function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      }
+    </script>-->
+    <script>
+      // Function to set a cookie
+      function setCookie(name, value, days) {
+        const expires = new Date();
+        expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+        document.cookie =
+          name + "=" + value + ";expires=" + expires.toUTCString();
+      }
+
+      // Function to get a cookie value by name
+      function getCookie(name) {
+        const keyValue = document.cookie.match(
+          "(^|;) ?" + name + "=([^;]*)(;|$)"
+        );
+        return keyValue ? keyValue[2] : null;
+      }
+
+      // Check if the form has been submitted before
+      if (getCookie("formSubmitted")) {
+        // If form has been submitted, redirect to homepage
+        window.location.href = "homepage.html";
+      }
+
+      const form = document.getElementById("google-form");
+      form.addEventListener("submit", handleSubmit);
+
+      function handleSubmit(event) {
+        event.preventDefault();
+
+        if (form.checkValidity()) {
+          const formData = new FormData(form);
+          fetch(
+            "https://script.google.com/macros/s/AKfycbxdpex02YXEmcrHzib9K1nqRFcwx3A9u9bBlowBlFdholyHv_lJs3iDklgYLsOYb1_w/exec",
+            {
+              method: "POST",
+              body: formData,
+            }
+          )
+            .then((response) => {
+              if (response.ok) {
+                // Set a cookie to mark form submission
+                setCookie("formSubmitted", "true", 365); // Cookie will last for 365 days
+                alert("Thanks for Contacting us..! Browse more...");
+                form.reset(); // Reset form after successful submission
+                window.location.href = "homepage.html"; // Redirect to homepage.html after successful submission
+              } else {
+                alert("Something went wrong. Please try again later.");
+              }
+            })
+            .catch((error) => {
+              console.error("Error!", error.message);
+              alert("Something went wrong. Please try again later.");
+            });
+        } else {
+          alert("Please fill in all required fields.");
+        }
+      }
+    </script>
+  </body>
+</html>
